@@ -4,12 +4,19 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.cricket.R
@@ -39,4 +46,29 @@ fun CommonImage(
         modifier = modifier,
         contentScale = ContentScale.Crop
     )
+}
+
+
+// common Text View for storing dynamic value
+@Composable
+fun CommonTextView(text: String,
+                   modifier: Modifier = Modifier,
+                   fontSize: TextUnit = 16.sp, // Default font size
+                   fontWeight: FontWeight = FontWeight.Normal, // Default font weight
+                   color: Color = Color.Black, // Default text color
+                   textAlign: TextAlign? = null, // Optional text alignment
+                   maxLines: Int = Int.MAX_VALUE, // Default: No line limit
+                   overflow: TextOverflow = TextOverflow.Ellipsis // Handles overflow text
+ ){
+    Text(
+        text = text,
+        modifier = modifier,
+        fontSize = fontSize,
+        fontWeight = fontWeight,
+        color = color,
+        textAlign = textAlign,
+        maxLines = maxLines,
+        overflow = overflow
+    )
+
 }
