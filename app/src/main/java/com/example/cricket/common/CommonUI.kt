@@ -62,7 +62,7 @@ fun CommonImage(
 }
 
 
-// common Text View for storing dynamic value
+// common Text View & storing dynamic value
 @Composable
 fun CommonTextView( text: String,
                     modifier: Modifier = Modifier,
