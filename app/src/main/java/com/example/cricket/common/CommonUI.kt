@@ -1,13 +1,22 @@
 package com.example.cricket.common
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -33,7 +42,9 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.cricket.R
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 
 
 // common Image function for loading SVG File and GIF file
@@ -180,4 +191,112 @@ fun SpacerHeight(height: Dp = 5.dp) {
 @Composable
 fun SpacerWidth(width: Dp = 5.dp) {
     Spacer(modifier = Modifier.width(width))
+}
+
+
+const val OTP_VIEW_TYPE_NONE = 0
+const val OTP_VIEW_TYPE_UNDERLINE = 1
+const val OTP_VIEW_TYPE_BORDER = 2
+
+
+@Composable
+fun OtpView(
+    modifier: Modifier = Modifier,
+    otpText: String = "",
+    charColor: Color = Color(0XFFE8E8E8),
+    charBackground: Color = Color.Transparent,
+    charSize: TextUnit = 20.sp,
+    containerSize: Dp = charSize.value.dp * 2,
+    otpCount: Int = 4,
+    type: Int = OTP_VIEW_TYPE_BORDER,
+    enabled: Boolean = true,
+    password: Boolean = false,
+    passwordChar: String = "",
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+    onOtpTextChange: (String) -> Unit
+) {
+    BasicTextField(
+        modifier = modifier,
+        value = otpText,
+        onValueChange = {
+            if (it.length <= otpCount) {
+                onOtpTextChange.invoke(it)
+            }
+        },
+        enabled = enabled,
+        keyboardOptions = keyboardOptions,
+        decorationBox = {
+            Row(horizontalArrangement = Arrangement.SpaceAround) {
+                repeat(otpCount) { index ->
+                    Spacer(modifier = Modifier.width(2.dp))
+                    CharView(
+                        index = index,
+                        text = otpText,
+                        charColor = charColor,
+                        charSize = charSize,
+                        containerSize = containerSize,
+                        type = type,
+                        charBackground = charBackground,
+                        password = password,
+                        passwordChar = passwordChar,
+                    )
+                    Spacer(modifier = Modifier.width(15.dp))
+                }
+            }
+        })
+}
+
+
+@Composable
+private fun CharView(
+    index: Int,
+    text: String,
+    charColor: Color,
+    charSize: TextUnit,
+    containerSize: Dp,
+    type: Int = OTP_VIEW_TYPE_UNDERLINE,
+    charBackground: Color = Color.Transparent,
+    password: Boolean = false,
+    passwordChar: String = ""
+) {
+    val modifier = if (type == OTP_VIEW_TYPE_BORDER) {
+        Modifier
+            .size(containerSize)
+            .border(
+                width = 1.dp,
+                color = charColor,
+                shape = RoundedCornerShape(5.dp)
+            )
+            .padding(bottom = 4.dp)
+            .background(charBackground)
+    } else Modifier
+        .width(containerSize)
+        .background(charBackground)
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        val char = when {
+            index >= text.length -> ""
+            password -> passwordChar
+            else -> text[index].toString()
+        }
+        Text(
+            text = char,
+            color = Color.Black,
+            modifier = modifier.wrapContentHeight(),
+            fontSize = charSize,
+            textAlign = TextAlign.Center,
+        )
+        if (type == OTP_VIEW_TYPE_UNDERLINE) {
+            Spacer(modifier = Modifier.height(2.dp))
+            Box(
+                modifier = Modifier
+                    .background(charColor)
+                    .height(1.dp)
+                    .width(containerSize)
+            )
+        }
+    }
 }
