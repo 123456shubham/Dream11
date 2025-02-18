@@ -38,6 +38,7 @@ fun SendOTP(){
         Column{
 
             CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif")
+
             CommonTextView(
                 text = "Verify your Mobile Number",
                 paddingStart = 16.dp,

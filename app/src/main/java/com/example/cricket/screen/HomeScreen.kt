@@ -35,7 +35,7 @@ import com.example.cricket.common.CommonImage
 @Composable
 fun HomeScreen(){
     Box (modifier = Modifier
-        .fillMaxSize()){
+        .fillMaxWidth()){
         Column {
 
             Column(modifier =Modifier
@@ -73,7 +73,7 @@ fun TabLayout() {
                 )
             },
             divider = {
-                Divider(color = Color.Transparent)
+                Divider(color = Color.White)
             }
         ) {
             tabs.forEachIndexed { index, title ->
@@ -93,7 +93,7 @@ fun TabLayout() {
             }
         }
         when (tabIndex) {
-//            0 -> Text(text = "Tab 1 Content")
+//            0 -> SportsScreen()
 //            1 -> Text(text = "Tab 2 Content")
 //            2 -> Text(text = "Tab 3 Content")
 //            3->  Text(text = "Tab 4 Content")
