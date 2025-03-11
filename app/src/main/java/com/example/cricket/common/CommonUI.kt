@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -43,6 +44,7 @@ import coil.request.ImageRequest
 import com.example.cricket.R
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 
@@ -296,6 +298,37 @@ private fun CharView(
                     .background(charColor)
                     .height(1.dp)
                     .width(containerSize)
+            )
+        }
+    }
+}
+
+@Composable
+fun DynamicTextViews(x: Int,modifier: Modifier) {
+    // Create a list of Text views based on the value of x
+    Row {
+        repeat(x) { index ->
+            Text(text = "in",modifier.background(Color.White))
+        }
+    }
+}
+
+
+@Composable
+fun DynamicSelectableImages(total: Int, selectedCount: Int) {
+    Row(
+        modifier = Modifier.padding(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        repeat(total) { index ->
+            val isSelected = index < selectedCount
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with your image resource
+                contentDescription = "Image $index",
+                modifier = Modifier
+                    .size(20.dp)
+                    .background(if (isSelected) Color.Green else Color.White, shape = CircleShape)
+                    .padding(8.dp)
             )
         }
     }
