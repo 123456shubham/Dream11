@@ -52,10 +52,9 @@ fun MatchScreen(){
                     paddingTop = 10.dp,
                     paddingBottom = 10.dp,
                     fontWeight = FontWeight.Bold,
-                    color = colorResource(id = R.color.white),
+                    color = colorResource(id = R.color.pink),
                     textAlign = TextAlign.Start,
                     maxLines = 2,
-                    modifier =Modifier.weight(1f).background(color = colorResource(R.color.pink)).shadow(elevation = 1.dp, shape = RoundedCornerShape(bottomStart = 0.dp, bottomEnd = 0.dp))
                 )
 
 

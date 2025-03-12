@@ -46,11 +46,10 @@ fun HomeScreen(){
                     CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
 
                     CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
-
                 }
-                TabLayout()
-
             }
+            TabLayout()
+
         }
     }
 }
@@ -60,9 +59,11 @@ fun HomeScreen(){
 fun TabLayout() {
     var tabIndex by remember { mutableIntStateOf(0) }
 
-    val tabs = listOf("Cricket", "Football", "Basketball","Hockey")
+    // Tab titles
+    val tabs = listOf("Cricket", "Football", "Basketball", "Hockey")
 
     Column(modifier = Modifier.fillMaxWidth()) {
+        // TabRow
         TabRow(
             selectedTabIndex = tabIndex,
             containerColor = colorResource(id = R.color.pink),
@@ -76,6 +77,7 @@ fun TabLayout() {
                 Divider(color = Color.White)
             }
         ) {
+            // Creating tabs dynamically based on `tabs` list
             tabs.forEachIndexed { index, title ->
                 Tab(
                     text = {
@@ -92,11 +94,13 @@ fun TabLayout() {
                 )
             }
         }
+
+        // Displaying content based on selected tab
         when (tabIndex) {
-//            0 -> SportsScreen()
-//            1 -> Text(text = "Tab 2 Content")
-//            2 -> Text(text = "Tab 3 Content")
-//            3->  Text(text = "Tab 4 Content")
+            0 -> SportsScreen()
+//            1 -> FootballScreen()
+//            2 -> BasketballScreen()
+//            3 -> HockeyScreen()
         }
     }
 }
