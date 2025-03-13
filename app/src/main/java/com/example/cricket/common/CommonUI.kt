@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -345,17 +346,20 @@ fun DynamicSelectableImages(total: Int, selectedCount: Int) {
 }
 
 @Composable
-fun CommonTabLayout(tabs: List<String>, screens: List<@Composable () -> Unit>) {
-    var tabIndex by remember { mutableIntStateOf(0) }
-
+fun CommonTabLayout(
+    tabs: List<String>,
+    screens: List<@Composable () -> Unit>,
+    selectedTabIndex: Int, // Externally controlled tab index
+    onTabSelected: (Int) -> Unit // Callback to update tab index
+) {
     Column(modifier = Modifier.fillMaxWidth()) {
         // TabRow with dynamic tabs
         TabRow(
-            selectedTabIndex = tabIndex,
+            selectedTabIndex = selectedTabIndex,
             containerColor = colorResource(id = R.color.pink),
             indicator = { tabPositions ->
                 TabRowDefaults.Indicator(
-                    modifier = Modifier.tabIndicatorOffset(tabPositions[tabIndex]),
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                     color = Color.White
                 )
             },
@@ -367,21 +371,24 @@ fun CommonTabLayout(tabs: List<String>, screens: List<@Composable () -> Unit>) {
                         Text(
                             title,
                             style = TextStyle(
-                                color = if (tabIndex == index) Color.White else Color.LightGray,
-                                fontWeight = if (tabIndex == index) FontWeight.Bold else FontWeight.Normal
+                                color = if (selectedTabIndex == index) Color.White else Color.LightGray,
+                                fontWeight = if (selectedTabIndex == index) FontWeight.Bold else FontWeight.Normal
                             )
                         )
                     },
-                    selected = tabIndex == index,
-                    onClick = { tabIndex = index },
+                    selected = selectedTabIndex == index,
+                    onClick = { onTabSelected(index) }, // Calls parent function to update state
                 )
             }
         }
 
         // Display the corresponding screen dynamically
-        screens[tabIndex]()
+        Box(modifier = Modifier.fillMaxSize().padding(top = 8.dp)) {
+            screens[selectedTabIndex]() // Renders the selected tab's content
+        }
     }
 }
+
 
 
 
