@@ -337,7 +337,7 @@ fun DynamicSelectableImages(total: Int, selectedCount: Int) {
                 painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with your image resource
                 contentDescription = "Image $index",
                 modifier = Modifier
-                    .size(20.dp)
+                    .size(15.dp)
                     .background(if (isSelected) Color.Green else Color.White, shape = CircleShape)
                     .padding(8.dp)
             )

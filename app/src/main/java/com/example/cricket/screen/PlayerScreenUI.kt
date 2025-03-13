@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -76,9 +77,9 @@ fun FlipIconButton() {
         ) { state ->
             if (state) {
                 Icon(
-                    imageVector = Icons.Default.Lock,
+                    imageVector = Icons.Filled.Clear,
                     contentDescription = "Remove",
-                    tint = MaterialTheme.colorScheme.primary
+                    tint = colorResource(R.color.red)
                 )
             } else {
                 Icon(

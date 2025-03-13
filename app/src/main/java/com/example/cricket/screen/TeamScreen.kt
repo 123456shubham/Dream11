@@ -67,7 +67,7 @@ fun TeamScreen() {
                     Column(modifier = Modifier.padding(10.dp)) {
                         CommonTextView(
                             "Create Team", fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp, color = colorResource(R.color.white)
+                            fontSize = 16.sp, color = colorResource(R.color.white)
                         )
                         CommonTextView(
                             "1h 05m left", fontWeight = FontWeight.Normal,
@@ -84,12 +84,12 @@ fun TeamScreen() {
                 ) {
                     CommonImage(
                         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png",
-                        modifier = Modifier.heightIn(min = 50.dp, max = 50.dp).width(50.dp).height(50.dp)
+                        modifier = Modifier.heightIn(min = 50.dp, max = 50.dp).width(50.dp).height(40.dp)
                     )
                     CommonTextView(
                         "Ind", paddingStart = 10.dp, paddingEnd = 10.dp,
                         textAlign = TextAlign.Center, color = Color.White,
-                        fontSize = 16.sp, fontWeight = FontWeight.Bold
+                        fontSize = 14.sp, fontWeight = FontWeight.Bold
                     )
                     CommonTextView(
                         "-", paddingStart = 10.dp, paddingEnd = 10.dp,
@@ -99,11 +99,11 @@ fun TeamScreen() {
                     CommonTextView(
                         "Pak", paddingStart = 10.dp, paddingEnd = 10.dp,
                         textAlign = TextAlign.Center, color = Color.White,
-                        fontSize = 16.sp, fontWeight = FontWeight.Bold
+                        fontSize = 14.sp, fontWeight = FontWeight.Bold
                     )
                     CommonImage(
                         imageUrl = "https://upload.wikimedia.org/wikipedia/commons/b/bc/Flag_of_India.png",
-                        modifier = Modifier.heightIn(min = 50.dp, max = 50.dp).width(50.dp).height(50.dp)
+                        modifier = Modifier.heightIn(min = 50.dp, max = 50.dp).width(50.dp).height(40.dp)
                     )
                 }
 
@@ -116,7 +116,7 @@ fun TeamScreen() {
                     CommonTextView(
                         "5/11", paddingStart = 10.dp, paddingEnd = 1.dp,
                         textAlign = TextAlign.Center, color = Color.White,
-                        fontSize = 16.sp, fontWeight = FontWeight.Bold
+                        fontSize = 15.sp, fontWeight = FontWeight.Bold
                     )
                     DynamicSelectableImages(total = 11, selectedCount = 5)
                 }
