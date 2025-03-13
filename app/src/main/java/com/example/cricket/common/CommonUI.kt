@@ -21,8 +21,13 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.TabRowDefaults
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -43,10 +48,15 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.cricket.R
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import com.example.cricket.screen.SportsScreen
 
 
 // common Image function for loading SVG File and GIF file
@@ -333,3 +343,45 @@ fun DynamicSelectableImages(total: Int, selectedCount: Int) {
         }
     }
 }
+
+@Composable
+fun CommonTabLayout(tabs: List<String>, screens: List<@Composable () -> Unit>) {
+    var tabIndex by remember { mutableIntStateOf(0) }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        // TabRow with dynamic tabs
+        TabRow(
+            selectedTabIndex = tabIndex,
+            containerColor = colorResource(id = R.color.pink),
+            indicator = { tabPositions ->
+                TabRowDefaults.Indicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[tabIndex]),
+                    color = Color.White
+                )
+            },
+            divider = { Divider(color = Color.White) }
+        ) {
+            tabs.forEachIndexed { index, title ->
+                Tab(
+                    text = {
+                        Text(
+                            title,
+                            style = TextStyle(
+                                color = if (tabIndex == index) Color.White else Color.LightGray,
+                                fontWeight = if (tabIndex == index) FontWeight.Bold else FontWeight.Normal
+                            )
+                        )
+                    },
+                    selected = tabIndex == index,
+                    onClick = { tabIndex = index },
+                )
+            }
+        }
+
+        // Display the corresponding screen dynamically
+        screens[tabIndex]()
+    }
+}
+
+
+
