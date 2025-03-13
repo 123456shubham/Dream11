@@ -20,15 +20,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cricket.R
 import com.example.cricket.common.AppButton
 import com.example.cricket.common.CommonImage
-import com.example.cricket.common.CommonTextField
 import com.example.cricket.common.CommonTextView
+import com.example.cricket.common.MyOutlinedTextField
+import com.example.cricket.navigation.Routes
 
-@Preview(showSystemUi = true, showBackground = true)
+//@Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun SendOTP(){
+fun SendOTP(modifier: Modifier=Modifier,navController: NavController){
 
     val mobileNumber = rememberSaveable { mutableStateOf("") }
 
@@ -68,7 +70,7 @@ fun SendOTP(){
             Spacer(modifier = Modifier.padding(top = 10.dp))
 
 
-            CommonTextField(
+            MyOutlinedTextField(
                 value = mobileNumber.value,
                 onValueChange = { newText ->
                     if (newText.all { it.isDigit() }) { // Allow only numeric input
@@ -76,9 +78,9 @@ fun SendOTP(){
                     }
                 },
                 placeholder = "Enter Mobile Number",
-                placeholderColor = colorResource(id = R.color.white),
-                textColor = colorResource(id = R.color.white),
-                borderColor = colorResource(id = R.color.white),
+                placeholderColor = colorResource(id = R.color.black),
+                textColor = colorResource(id = R.color.black),
+                borderColor = colorResource(id = R.color.pink),
                 paddingStart = 16.dp,
                 paddingEnd = 16.dp,
                 paddingTop = 26.dp,
@@ -95,7 +97,7 @@ fun SendOTP(){
                 paddingEnd = 16.dp,
                 paddingTop = 16.dp,
                 paddingBottom = 0.dp,
-                onClick = { /* Submit Action */ }
+                onClick = { navController.navigate(Routes.verifyOTP) }
             )
 
         }

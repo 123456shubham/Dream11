@@ -1,11 +1,9 @@
 package com.example.cricket.screen
 
-import androidx.annotation.ColorRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -27,13 +25,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cricket.R
 import com.example.cricket.common.CommonImage
 
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun HomeScreen(){
+fun HomeScreen(modifier: Modifier,navController: NavController){
     Box (modifier = Modifier
         .fillMaxWidth()){
         Column {
@@ -43,9 +42,9 @@ fun HomeScreen(){
                 .background(colorResource(id = R.color.pink))) {
                 Row (modifier = Modifier.padding(top = 20.dp)){
 
-                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
+//                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
 
-                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
+//                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(100.dp))
                 }
             }
             TabLayout()
@@ -83,6 +82,7 @@ fun TabLayout() {
                     text = {
                         Text(
                             title,
+                            fontSize = 9.sp,
                             style = TextStyle(
                                 color = if (tabIndex == index) Color.White else Color.LightGray,
                                 fontWeight = if (tabIndex == index) FontWeight.Bold else FontWeight.Normal

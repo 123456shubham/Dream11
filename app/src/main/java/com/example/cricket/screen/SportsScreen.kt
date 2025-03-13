@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
@@ -30,7 +32,7 @@ import com.example.cricket.common.CommonTextView
 fun SportsScreen(){
     Box (modifier = Modifier
         .fillMaxWidth()
-        .padding(top = 50.dp, start = 10.dp, end = 10.dp, bottom = 5.dp)
+        .padding(top = 0.dp, start = 10.dp, end = 10.dp, bottom = 5.dp)
         .background(color = colorResource(R.color.white))
         .shadow(elevation = 5.dp, shape = RoundedCornerShape(10.dp))
         .clip(RoundedCornerShape(10.dp))){
@@ -66,7 +68,7 @@ fun MatchScreen(){
 
             Row (modifier = Modifier.fillMaxWidth().padding(top = 10.dp, bottom = 10.dp)){
                 Column (modifier = Modifier){
-                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(min=30.dp, max = 30.dp))
+                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(min=30.dp, max = 30.dp).width(50.dp).height(40.dp))
                     CommonTextView(
                         modifier = Modifier.align(Alignment.CenterHorizontally),
                         text = "INDIA",
@@ -95,9 +97,9 @@ fun MatchScreen(){
                 )
 
                 Column (modifier = Modifier.fillMaxWidth().weight(1f), horizontalAlignment = Alignment.End){
-                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(min=30.dp, max = 30.dp).align(Alignment.CenterHorizontally))
+                    CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", modifier = Modifier.heightIn(min=30.dp, max = 30.dp).width(50.dp).height(40.dp).align(Alignment.End))
                     CommonTextView(
-                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        modifier = Modifier.align(Alignment.End).padding(end = 10.dp),
                         text = "England",
                         fontSize = 14.sp,
                         paddingTop = 10.dp,

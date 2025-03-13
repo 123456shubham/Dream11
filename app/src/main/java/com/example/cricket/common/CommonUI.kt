@@ -23,7 +23,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -116,22 +115,22 @@ fun CommonTextView( text: String,
 
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CommonTextField(
+fun MyOutlinedTextField(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
     placeholder: String = "Enter text...",
     textColor: Color = Color.Black,
-    placeholderColor: Color = Color.Gray,
+    placeholderColor: Color = Color.White,
     borderColor: Color = colorResource(id = R.color.pink), // Default border color
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default, // Dynamic keyboard options
     visualTransformation: VisualTransformation = VisualTransformation.None, // Allows password masking
     paddingStart: Dp = 0.dp,
     paddingEnd: Dp = 0.dp,
     paddingTop: Dp = 0.dp,
-    paddingBottom: Dp = 0.dp
+    paddingBottom: Dp = 0.dp,
+    borderRadius: Int = 12 // Set the border radius
 ) {
     OutlinedTextField(
         value = value,
@@ -149,9 +148,11 @@ fun CommonTextField(
         keyboardOptions = keyboardOptions,
         visualTransformation = visualTransformation, // Handles transformations (e.g., password)
         singleLine = true,
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = borderColor,  // Color when focused
-            unfocusedBorderColor = borderColor // Color when not focused
+        shape = RoundedCornerShape(borderRadius.dp), // 👈 Adds border radius
+
+        colors = TextFieldDefaults.colors(
+            focusedIndicatorColor = borderColor,  // Border color when focused
+            unfocusedIndicatorColor = borderColor, // Border color when not focused
         )
     )
 }

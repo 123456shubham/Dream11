@@ -21,16 +21,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.cricket.R
 import com.example.cricket.common.AppButton
 import com.example.cricket.common.CommonImage
 import com.example.cricket.common.CommonTextView
 import com.example.cricket.common.OtpView
+import com.example.cricket.navigation.Routes
 
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun VerifyOTPScreen(){
+fun VerifyOTPScreen(modifier: Modifier,navController: NavController){
 
     val otp by rememberSaveable { mutableStateOf("****") }
 
@@ -105,7 +106,7 @@ fun VerifyOTPScreen(){
                 paddingEnd = 16.dp,
                 paddingTop = 16.dp,
                 paddingBottom = 0.dp,
-                onClick = { /* Submit Action */ }
+                onClick = { navController.navigate(Routes.HomeScreen) }
             )
 
 
