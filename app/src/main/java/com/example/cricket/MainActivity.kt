@@ -12,6 +12,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.cricket.screen.SendOTP
 import com.example.cricket.screen.TeamScreen
 import com.example.cricket.ui.theme.CricketTheme
 
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    TeamScreen()
+                    SendOTP()
                 }
             }
         }

@@ -37,7 +37,7 @@ fun SendOTP(){
         .background(colorResource(id = R.color.pink)) ){
         Column{
 
-            CommonImage(imageUrl = "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif")
+            CommonImage(imageUrl = "https://www.pngegg.com/en/png-mwdic.png")
 
             CommonTextView(
                 text = "Verify your Mobile Number",
@@ -45,7 +45,7 @@ fun SendOTP(){
                 paddingEnd = 0.dp,
                 paddingTop = 6.dp,
                 paddingBottom = 0.dp,
-                fontSize = 28.sp,
+                fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = colorResource(id = R.color.white),
                 textAlign = TextAlign.Center,
@@ -58,7 +58,7 @@ fun SendOTP(){
                 paddingEnd = 0.dp,
                 paddingTop = 20.dp,
                 paddingBottom = 0.dp,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
                 color = colorResource(id = R.color.white),
                 textAlign = TextAlign.Center,
